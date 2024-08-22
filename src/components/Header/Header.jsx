@@ -3,7 +3,7 @@ import { Logo, LogoutBtn } from "../index";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { FaSun, FaMoon } from "react-icons/fa"; // Import icons for the theme toggle
+import { FaSun, FaMoon } from "react-icons/fa";
 import ThemeToggle from "../themeToggle/ThemeToggle";
 
 function Header() {
@@ -30,20 +30,20 @@ function Header() {
     <header className="w-full py-4 bg-gradient-to-r from-blue-500 to-indigo-500 shadow-lg">
       <div className="max-w-7xl mx-auto px-4">
         <nav className="flex items-center justify-between">
-          {/* Logo on the left */}
+          {/* Logo Section */}
           <div className="flex items-center">
             <Link to="/">
               <Logo width="60px" />
             </Link>
           </div>
 
-          {/* Main navigation items in the center */}
+          {/* Main Navigation Links */}
           <ul className="flex items-center space-x-6">
             {mainNavItems.map((item) => (
               <li key={item.name}>
                 <button
                   onClick={() => navigate(item.slug)}
-                  className="px-6 py-2 text-xl text-white font-semibold hover:bg-white hover:text-blue-500 rounded-full transition-colors duration-300"
+                  className="px-4 py-2 text-lg text-white font-semibold hover:bg-white hover:text-blue-500 rounded transition-colors duration-300"
                 >
                   {item.name}
                 </button>
@@ -51,7 +51,9 @@ function Header() {
             ))}
           </ul>
 
+          {/* Right Side Section */}
           <div className="flex items-center space-x-6">
+            {/* Authentication Links */}
             {authStatus ? (
               <LogoutBtn />
             ) : (
@@ -59,27 +61,16 @@ function Header() {
                 <li key={item.name}>
                   <button
                     onClick={() => navigate(item.slug)}
-                    className="px-6 py-2 text-xl text-white font-semibold hover:bg-white hover:text-blue-500 rounded-full transition-colors duration-300"
+                    className="px-4 py-2 text-lg text-white font-semibold hover:bg-white hover:text-blue-500 rounded transition-colors duration-300"
                   >
                     {item.name}
                   </button>
                 </li>
               ))
             )}
-          </div>
 
-      
-          <div className="flex items-center">
-            <ThemeToggle>
-              {({ isDarkMode, toggleTheme }) => (
-                <button
-                  onClick={toggleTheme}
-                  className="text-white text-2xl transition-colors duration-300 hover:text-yellow-500"
-                >
-                  {isDarkMode ? <FaMoon /> : <FaSun />}
-                </button>
-              )}
-            </ThemeToggle>
+            {/* Theme Toggle */}
+            <ThemeToggle />
           </div>
         </nav>
       </div>
